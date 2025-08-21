@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from controller import register_user, login_user, get_me, get_all_user
 
@@ -20,5 +20,5 @@ def read_user_me(token: str = Depends(oauth2_schema)):
     return get_me(token)
 
 @router.get("/user")
-def user():
-    return get_all_user()
+def user(token: str = Depends(oauth2_schema)):
+    return get_all_user(token)

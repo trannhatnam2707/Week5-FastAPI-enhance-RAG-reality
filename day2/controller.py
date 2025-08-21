@@ -10,5 +10,5 @@ def login_user(form_data):
 def get_me(token):
     return get_me_service(token)
 
-def get_all_user():
-    return get_all_user_service()
+def get_all_user(token):
+    return get_all_user_service(token)
